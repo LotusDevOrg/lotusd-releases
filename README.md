@@ -13,7 +13,7 @@ the release notes. It has no source code.
 > mainnet (median time past of the previous block at or after
 > 1797886200). Earlier versions, 12.4.x included, do not follow the chain
 > after the fork. Until then 12.5.x follows the same rules as 12.4.x, so
-> you can upgrade now. The latest version is **12.5.2**; the notes of each
+> you can upgrade now. The latest version is **12.5.3**; the notes of each
 > release say what changes and what to do. Upgrade guide:
 > [lotusia.network/upgrades](https://lotusia.network/upgrades/).
 
@@ -45,13 +45,13 @@ and with `latest`.
 
 ## Install
 
-Replace `12.5.2` with the version you want. The release page lists every
+Replace `12.5.3` with the version you want. The release page lists every
 file with its size and checksum.
 
 ### Linux
 
 ```sh
-V=12.5.2
+V=12.5.3
 BASE=https://github.com/LotusDevOrg/lotusd-releases/releases/download/v$V
 curl -fsSLO $BASE/SHA256SUMS
 curl -fsSLO $BASE/lotus-binaries-$V-linux-x86_64.tar.gz
@@ -81,7 +81,7 @@ must give the value on that file's line in `SHA256SUMS`. Then unzip.
 ### Docker
 
 ```sh
-docker pull ghcr.io/lotusdevorg/lotusd:12.5.2
+docker pull ghcr.io/lotusdevorg/lotusd:12.5.3
 ```
 
 Pull a version, not only `latest`, so that an upgrade is something you
