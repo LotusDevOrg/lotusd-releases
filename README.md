@@ -8,10 +8,20 @@ tools, the GPU miner and the Lotus Miner desktop app.
 This repository holds releases only: the downloads, their checksums and
 the release notes. It has no source code.
 
-> **Operators: run 12.4.13 or later before 2026-12-21 20:50 UTC.** That
-> version activates new consensus rules on mainnet at Napoleon (median
-> time past of the previous block at or after 1797886200). The notes of
-> each release say what changes and what to do.
+> **Operators: run 12.5.1 or later before 2026-12-21 20:50 UTC.** That is
+> when the Napoleon network upgrade activates new consensus rules on
+> mainnet (median time past of the previous block at or after
+> 1797886200). Earlier versions, 12.4.x included, do not follow the chain
+> after the fork. Until then 12.5.x follows the same rules as 12.4.x, so
+> you can upgrade now. The latest version is **12.5.2**; the notes of each
+> release say what changes and what to do. Upgrade guide:
+> [lotusia.network/upgrades](https://lotusia.network/upgrades/).
+
+> **Merged-mining pools, from Napoleon:** Litecoin pools that already
+> merge-mine Lotus with standard AuxPoW need no change. SHA-256d pools
+> (eCash, Bitcoin, Bitcoin Cash) name their chain in one place:
+> `createauxblock <address> xec|btc|bch`, or `-auxpowalgo=<chain>` on the
+> Lotus node. Details: [lotusia.network/napoleon](https://lotusia.network/napoleon/#pools).
 
 ## What a release contains
 
@@ -35,13 +45,13 @@ and with `latest`.
 
 ## Install
 
-Replace `12.4.13` with the version you want. The release page lists every
+Replace `12.5.2` with the version you want. The release page lists every
 file with its size and checksum.
 
 ### Linux
 
 ```sh
-V=12.4.13
+V=12.5.2
 BASE=https://github.com/LotusDevOrg/lotusd-releases/releases/download/v$V
 curl -fsSLO $BASE/SHA256SUMS
 curl -fsSLO $BASE/lotus-binaries-$V-linux-x86_64.tar.gz
@@ -71,7 +81,7 @@ must give the value on that file's line in `SHA256SUMS`. Then unzip.
 ### Docker
 
 ```sh
-docker pull ghcr.io/lotusdevorg/lotusd:12.4.13
+docker pull ghcr.io/lotusdevorg/lotusd:12.5.2
 ```
 
 Pull a version, not only `latest`, so that an upgrade is something you
@@ -114,6 +124,13 @@ when it is not.
 - When signing is added it will be announced here and in the release
   notes, with the key and how to check it. Nothing else is an announcement
   of a key.
+
+## Third-party data
+
+From 12.5.2 the node embeds an IP-to-country and IP-to-ASN table for the
+peer flags of its web UI: DB-IP "IP to Country Lite" and "IP to ASN Lite"
+([db-ip.com](https://db-ip.com)), licensed CC BY 4.0. The lookup runs inside
+the node; no address is sent anywhere.
 
 ## Links
 
