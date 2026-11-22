@@ -1,0 +1,1136 @@
+[
+ {
+  "version": "12.5.6",
+  "tag": "v12.5.6",
+  "date": "2026-11-22",
+  "title": "Encrypted links between nodes, a node in the browser, Lotus Desktop",
+  "consensus": null,
+  "minimum": "12.5.1, required from Napoleon (2026-12-21 20:50 UTC)",
+  "private": true,
+  "napoleon_ready": true,
+  "hero": {
+   "url": "https://raw.githubusercontent.com/LotusDevOrg/lotusd-releases/main/docs/assets/12.5.6/lotus-desktop-mining.png",
+   "ref": "lotus-desktop-mining.png",
+   "alt": "Lotus Desktop mining with two GPUs"
+  },
+  "intro": [
+   "Nodes now encrypt the links between them, the node's pages carry a small Lotus node that runs in the visitor's browser, and Lotus Desktop arrives: one app to mine, hold a wallet and vote with RANK."
+  ],
+  "alerts": [
+   {
+    "kind": "IMPORTANT",
+    "text": "**Napoleon, 2026-12-21 20:50 UTC:** every node must run 12.5.1 or later before then. This version qualifies. Earlier versions, 12.4.x included, do not follow the chain after the fork."
+   }
+  ],
+  "items": [
+   {
+    "lead": "Indexer: a failed rollback could stop block processing; upgrade recommended.",
+    "text": "",
+    "image": null,
+    "alt": "Indexer: a failed rollback could stop block processing; upgrade recommended",
+    "means": null,
+    "url": null
+   },
+   {
+    "lead": "Encrypted connections between nodes.",
+    "text": " Two 12.5.6 nodes encrypt the link between them; with an older node the link stays as it was.",
+    "image": "encrypted-peers.png",
+    "alt": "The peer list of a node, with its encrypted links",
+    "means": "Nothing to set up. The peer list shows which links are encrypted.",
+    "url": "https://raw.githubusercontent.com/LotusDevOrg/lotusd-releases/main/docs/assets/12.5.6/encrypted-peers.png"
+   },
+   {
+    "lead": "A Lotus node in the browser.",
+    "text": " The node's pages turn the visitor's browser into a small Lotus node that checks block headers itself. The web wallet uses it, and opens Lotus Qt and lotusd wallet files too. One setting lets an operator turn it off for every visitor.",
+    "image": "browser-node.png",
+    "alt": "The browser node panel: tip, headers checked, peers",
+    "means": "Your browser checks the chain itself instead of trusting one server.",
+    "url": "https://raw.githubusercontent.com/LotusDevOrg/lotusd-releases/main/docs/assets/12.5.6/browser-node.png"
+   },
+   {
+    "lead": "Lotus Desktop, first release.",
+    "text": " One app to mine with your GPU, hold a wallet and vote with RANK on X (Linux for now). It is also a small peer of the network that checks block headers itself. Your keys stay on your computer: write down the recovery words or save a backup file before you put coins in.",
+    "image": "lotus-desktop-wallet.png",
+    "alt": "Lotus Desktop: create a wallet or bring yours",
+    "means": "Mine and keep what you earn in one app, with keys on your own computer.",
+    "url": "https://raw.githubusercontent.com/LotusDevOrg/lotusd-releases/main/docs/assets/12.5.6/lotus-desktop-wallet.png"
+   },
+   {
+    "lead": "Secure WebSocket with automatic certificates",
+    "text": ", for operators who turn them on.",
+    "image": "secure-websocket.png",
+    "alt": "The certificate page of the node's web UI",
+    "means": "Pages served over HTTPS can reach your node, with a free certificate it renews itself.",
+    "url": "https://raw.githubusercontent.com/LotusDevOrg/lotusd-releases/main/docs/assets/12.5.6/secure-websocket.png"
+   },
+   {
+    "lead": "Pools: a node whose ledger fell out of line repairs itself, and the ASIC proxy pools are the ones the operator lists.",
+    "text": "",
+    "image": null,
+    "alt": "Pools: a node whose ledger fell out of line repairs itself, and the ASIC proxy pools are the ones the operator lists",
+    "means": null,
+    "url": null
+   }
+  ],
+  "audiences": {
+   "Node operators": [
+    {
+     "lead": "Upgrade before Napoleon",
+     "text": " if you run 12.4.x; 12.5.1 or later is required.",
+     "image": null,
+     "alt": "Upgrade before Napoleon",
+     "means": null
+    },
+    {
+     "lead": "Encryption is on by default.",
+     "text": " Links to nodes still on an older version stay plain and keep working.",
+     "image": null,
+     "alt": "Encryption is on by default",
+     "means": null
+    },
+    {
+     "lead": "Browser peers:",
+     "text": " `-p2pwsautostart=0` stops your pages from starting the browser node for their visitors.",
+     "image": null,
+     "alt": "Browser peers",
+     "means": null
+    },
+    {
+     "lead": "New options go in after the upgrade",
+     "text": ", never before: lotusd refuses to start on an option it does not know.",
+     "image": null,
+     "alt": "New options go in after the upgrade",
+     "means": null
+    }
+   ],
+   "Miners": [
+    {
+     "lead": "Pool nodes repair their own ledger",
+     "text": " when it falls out of line with the rest of the pool.",
+     "image": null,
+     "alt": "Pool nodes repair their own ledger",
+     "means": null
+    },
+    {
+     "lead": "ASIC proxy pools",
+     "text": " are the ones the node operator lists.",
+     "image": null,
+     "alt": "ASIC proxy pools",
+     "means": null
+    }
+   ],
+   "Wallet users": [
+    {
+     "lead": "The web wallet runs a small node in your browser",
+     "text": " that checks block headers itself.",
+     "image": null,
+     "alt": "The web wallet runs a small node in your browser",
+     "means": null
+    },
+    {
+     "lead": "Bring your wallet:",
+     "text": " it opens Lotus Qt and lotusd wallet files.",
+     "image": null,
+     "alt": "Bring your wallet",
+     "means": null
+    }
+   ],
+   "Lotus Desktop users": [
+    {
+     "lead": "First release, Linux for now.",
+     "text": " Write down your recovery words or save a backup file before you put coins in.",
+     "image": null,
+     "alt": "First release, Linux for now",
+     "means": null
+    }
+   ]
+  },
+  "diagram": {
+   "title": "Is your node ready for Napoleon?",
+   "body": "```mermaid\nflowchart LR\n  A[Your node] --> B{Version 12.5.1 or later?}\n  B -- yes --> C[Ready: it follows the chain after 2026-12-21 20:50 UTC]\n  B -- no --> D[Upgrade to 12.5.6 before then]\n  D --> C\n```"
+  },
+  "compat": [
+   [
+    "Minimum version on the network",
+    "12.5.1, required from Napoleon (2026-12-21 20:50 UTC)"
+   ],
+   [
+    "Napoleon",
+    "Every node must run 12.5.1 or later before 2026-12-21 20:50 UTC. This version qualifies."
+   ],
+   [
+    "Upgrading",
+    "Stop the node, replace the binaries, start it. No migration, no reindex."
+   ],
+   [
+    "Going back",
+    "Back to 12.5.4 works: take the options new in 12.5.6 out of the configuration first (lotusd refuses to start on an option it does not know)."
+   ]
+  ],
+  "files": {
+   "SHA256SUMS": 2410,
+   "lotus-binaries-12.5.6-linux-x86_64.tar.gz": 42691543,
+   "lotus-binaries-12.5.6-macos-x86_64.tar.gz": 39212374,
+   "lotus-binaries-12.5.6-windows-x86_64.zip": 22907294,
+   "lotus-cli-12.5.6-linux-x86_64.tar.gz": 945655,
+   "lotus-cli-12.5.6-macos-x86_64.tar.gz": 453436,
+   "lotus-cli-12.5.6-windows-x86_64.zip": 831433,
+   "lotus-desktop-12.5.6-linux-x86_64.tar.gz": 31457280,
+   "lotus-gpu-miner-12.5.6-linux-x86_64.tar.gz": 2932919,
+   "lotus-miner-gui-12.5.6-linux-x86_64.tar.gz": 22258371,
+   "lotus-miner-gui-12.5.6-macos-arm64.zip": 10741576,
+   "lotus-miner-gui-12.5.6-macos-universal.zip": 20657045,
+   "lotus-miner-gui-12.5.6-macos-x86_64.zip": 11680143,
+   "lotus-miner-gui-12.5.6-windows-x86_64.zip": 12180584,
+   "lotus-seeder-12.5.6-linux-x86_64.tar.gz": 18746077,
+   "lotus-seeder-12.5.6-macos-x86_64.tar.gz": 17619605,
+   "lotus-tx-12.5.6-linux-x86_64.tar.gz": 1297698,
+   "lotus-tx-12.5.6-macos-x86_64.tar.gz": 836595,
+   "lotus-tx-12.5.6-windows-x86_64.zip": 1192071,
+   "lotus-wallet-12.5.6-linux-x86_64.tar.gz": 3017696,
+   "lotus-wallet-12.5.6-macos-x86_64.tar.gz": 2719786,
+   "lotus-wallet-12.5.6-windows-x86_64.zip": 2807046,
+   "lotusd-12.5.6-linux-x86_64.tar.gz": 18676401,
+   "lotusd-12.5.6-macos-x86_64.tar.gz": 17578702,
+   "lotusd-12.5.6-windows-x86_64.zip": 18077332
+  },
+  "images": [
+   "lotusd",
+   "lotus-cli",
+   "lotus-tx",
+   "lotus-seeder",
+   "lotus-wallet",
+   "lotus-gpu-miner"
+  ]
+ },
+ {
+  "version": "12.5.4",
+  "tag": "v12.5.4",
+  "date": "2026-11-21",
+  "title": "Live sync heights of peers",
+  "consensus": null,
+  "minimum": "12.5.1, required from Napoleon (2026-12-21 20:50 UTC)",
+  "private": true,
+  "napoleon_ready": true,
+  "hero": null,
+  "intro": [],
+  "alerts": [
+   {
+    "kind": "IMPORTANT",
+    "text": "**Napoleon, 2026-12-21 20:50 UTC:** every node must run 12.5.1 or later before then. This version qualifies. Earlier versions, 12.4.x included, do not follow the chain after the fork."
+   }
+  ],
+  "items": [
+   {
+    "lead": "Live sync heights of peers.",
+    "text": " Nodes tell their peers their height each time it moves, so the peer list shows how far a syncing node has got, updated every few seconds, instead of the height it had when it connected. For older peers the height is taken from the blocks they ask for.",
+    "image": null,
+    "alt": "Live sync heights of peers",
+    "means": null,
+    "url": null
+   },
+   {
+    "lead": "Slow peers stay connected.",
+    "text": " A peer that is busy syncing and slow to answer pings is no longer disconnected while it keeps talking to the node.",
+    "image": null,
+    "alt": "Slow peers stay connected",
+    "means": null,
+    "url": null
+   }
+  ],
+  "audiences": {},
+  "diagram": null,
+  "compat": [
+   [
+    "Minimum version on the network",
+    "12.5.1, required from Napoleon (2026-12-21 20:50 UTC)"
+   ],
+   [
+    "Napoleon",
+    "Every node must run 12.5.1 or later before 2026-12-21 20:50 UTC. This version qualifies."
+   ],
+   [
+    "Upgrading",
+    "Stop the node, replace the binaries, start it. The data directory is kept."
+   ],
+   [
+    "Going back",
+    "Stop the node and put the previous binaries back. Going back is not always possible once a newer version has written to the data directory; the release says when."
+   ]
+  ],
+  "files": {
+   "SHA256SUMS": 2410,
+   "lotus-binaries-12.5.4-linux-x86_64.tar.gz": 42691543,
+   "lotus-binaries-12.5.4-macos-x86_64.tar.gz": 39212374,
+   "lotus-binaries-12.5.4-windows-x86_64.zip": 22907294,
+   "lotus-cli-12.5.4-linux-x86_64.tar.gz": 945655,
+   "lotus-cli-12.5.4-macos-x86_64.tar.gz": 453436,
+   "lotus-cli-12.5.4-windows-x86_64.zip": 831433,
+   "lotus-gpu-miner-12.5.4-linux-x86_64.tar.gz": 2932919,
+   "lotus-miner-gui-12.5.4-linux-x86_64.tar.gz": 22258371,
+   "lotus-miner-gui-12.5.4-macos-arm64.zip": 10741576,
+   "lotus-miner-gui-12.5.4-macos-universal.zip": 20657045,
+   "lotus-miner-gui-12.5.4-macos-x86_64.zip": 11680143,
+   "lotus-miner-gui-12.5.4-windows-x86_64.zip": 12180584,
+   "lotus-seeder-12.5.4-linux-x86_64.tar.gz": 18746077,
+   "lotus-seeder-12.5.4-macos-x86_64.tar.gz": 17619605,
+   "lotus-tx-12.5.4-linux-x86_64.tar.gz": 1297698,
+   "lotus-tx-12.5.4-macos-x86_64.tar.gz": 836595,
+   "lotus-tx-12.5.4-windows-x86_64.zip": 1192071,
+   "lotus-wallet-12.5.4-linux-x86_64.tar.gz": 3017696,
+   "lotus-wallet-12.5.4-macos-x86_64.tar.gz": 2719786,
+   "lotus-wallet-12.5.4-windows-x86_64.zip": 2807046,
+   "lotusd-12.5.4-linux-x86_64.tar.gz": 18676401,
+   "lotusd-12.5.4-macos-x86_64.tar.gz": 17578702,
+   "lotusd-12.5.4-windows-x86_64.zip": 18077332
+  },
+  "images": [
+   "lotusd",
+   "lotus-cli",
+   "lotus-tx",
+   "lotus-seeder",
+   "lotus-wallet",
+   "lotus-gpu-miner"
+  ]
+ },
+ {
+  "version": "12.5.3",
+  "tag": "v12.5.3",
+  "date": "2026-11-20",
+  "title": "Forks and reorgs, recorded and shown",
+  "consensus": null,
+  "minimum": "12.5.1, required from Napoleon (2026-12-21 20:50 UTC)",
+  "private": true,
+  "napoleon_ready": true,
+  "hero": null,
+  "intro": [],
+  "alerts": [
+   {
+    "kind": "IMPORTANT",
+    "text": "**Napoleon, 2026-12-21 20:50 UTC:** every node must run 12.5.1 or later before then. This version qualifies. Earlier versions, 12.4.x included, do not follow the chain after the fork."
+   }
+  ],
+  "items": [
+   {
+    "lead": "Forks and reorgs, recorded and shown.",
+    "text": " The node keeps a history of reorganisations, orphaned and held blocks, side branches and parked chains, and groups them into episodes. A new Network page shows them live and over time, with the blocks each side won and lost.",
+    "image": null,
+    "alt": "Forks and reorgs, recorded and shown",
+    "means": null,
+    "url": null
+   },
+   {
+    "lead": "Up-to-date node documentation.",
+    "text": " The documentation served by the node now uses this release in its examples and walks through the upgrade to 12.5.x, the Napoleon requirement included.",
+    "image": null,
+    "alt": "Up-to-date node documentation",
+    "means": null,
+    "url": null
+   }
+  ],
+  "audiences": {},
+  "diagram": null,
+  "compat": [
+   [
+    "Minimum version on the network",
+    "12.5.1, required from Napoleon (2026-12-21 20:50 UTC)"
+   ],
+   [
+    "Napoleon",
+    "Every node must run 12.5.1 or later before 2026-12-21 20:50 UTC. This version qualifies."
+   ],
+   [
+    "Upgrading",
+    "Stop the node, replace the binaries, start it. The data directory is kept."
+   ],
+   [
+    "Going back",
+    "Stop the node and put the previous binaries back. Going back is not always possible once a newer version has written to the data directory; the release says when."
+   ]
+  ],
+  "files": {
+   "SHA256SUMS": 2410,
+   "lotus-binaries-12.5.3-linux-x86_64.tar.gz": 42681635,
+   "lotus-binaries-12.5.3-macos-x86_64.tar.gz": 39202883,
+   "lotus-binaries-12.5.3-windows-x86_64.zip": 22901908,
+   "lotus-cli-12.5.3-linux-x86_64.tar.gz": 945654,
+   "lotus-cli-12.5.3-macos-x86_64.tar.gz": 453433,
+   "lotus-cli-12.5.3-windows-x86_64.zip": 831432,
+   "lotus-gpu-miner-12.5.3-linux-x86_64.tar.gz": 2932911,
+   "lotus-miner-gui-12.5.3-linux-x86_64.tar.gz": 22258110,
+   "lotus-miner-gui-12.5.3-macos-arm64.zip": 10741576,
+   "lotus-miner-gui-12.5.3-macos-universal.zip": 20657045,
+   "lotus-miner-gui-12.5.3-macos-x86_64.zip": 11677791,
+   "lotus-miner-gui-12.5.3-windows-x86_64.zip": 12180584,
+   "lotus-seeder-12.5.3-linux-x86_64.tar.gz": 18741778,
+   "lotus-seeder-12.5.3-macos-x86_64.tar.gz": 17611956,
+   "lotus-tx-12.5.3-linux-x86_64.tar.gz": 1297692,
+   "lotus-tx-12.5.3-macos-x86_64.tar.gz": 836363,
+   "lotus-tx-12.5.3-windows-x86_64.zip": 1191928,
+   "lotus-wallet-12.5.3-linux-x86_64.tar.gz": 3017102,
+   "lotus-wallet-12.5.3-macos-x86_64.tar.gz": 2719736,
+   "lotus-wallet-12.5.3-windows-x86_64.zip": 2807124,
+   "lotusd-12.5.3-linux-x86_64.tar.gz": 18674372,
+   "lotusd-12.5.3-macos-x86_64.tar.gz": 17573540,
+   "lotusd-12.5.3-windows-x86_64.zip": 18072012
+  },
+  "images": [
+   "lotusd",
+   "lotus-cli",
+   "lotus-tx",
+   "lotus-seeder",
+   "lotus-wallet",
+   "lotus-gpu-miner"
+  ]
+ },
+ {
+  "version": "12.5.2",
+  "tag": "v12.5.2",
+  "date": "2026-11-20",
+  "title": "Lighter thin nodes, a faster web UI, per-chain charts",
+  "consensus": null,
+  "minimum": "12.5.1, required from Napoleon (2026-12-21 20:50 UTC)",
+  "private": true,
+  "napoleon_ready": true,
+  "hero": null,
+  "intro": [],
+  "alerts": [
+   {
+    "kind": "IMPORTANT",
+    "text": "**Napoleon, 2026-12-21 20:50 UTC:** every node must run 12.5.1 or later before then. This version qualifies. Earlier versions, 12.4.x included, do not follow the chain after the fork."
+   }
+  ],
+  "items": [
+   {
+    "lead": "Thin nodes stop rewriting their disk.",
+    "text": " A thin node started from a snapshot no longer downloads old blocks again and again; its disk writes drop to what each new block needs.",
+    "image": null,
+    "alt": "Thin nodes stop rewriting their disk",
+    "means": null,
+    "url": null
+   },
+   {
+    "lead": "Explorer: the first block is always indexed.",
+    "text": " The explorer tables no longer depend on start-up timing for the genesis block.",
+    "image": null,
+    "alt": "Explorer: the first block is always indexed",
+    "means": null,
+    "url": null
+   },
+   {
+    "lead": "A responsive web UI under load.",
+    "text": " Idle browser and proxy connections no longer hold the node's request threads, so pages and the API answer at once while several tabs or a reverse proxy are connected.",
+    "image": null,
+    "alt": "A responsive web UI under load",
+    "means": null,
+    "url": null
+   },
+   {
+    "lead": "Charts per parent chain.",
+    "text": " The difficulty and hashrate charts draw one series per chain (Lotus, Bitcoin, eCash, Bitcoin Cash, Litecoin), each in its own colour.",
+    "image": null,
+    "alt": "Charts per parent chain",
+    "means": null,
+    "url": null
+   },
+   {
+    "lead": "Accurate peer flags.",
+    "text": " A peer's country now comes from exact address ranges, for IPv4 and IPv6, with its network operator. The table is built into the node: no address leaves it.",
+    "image": null,
+    "alt": "Accurate peer flags",
+    "means": null,
+    "url": null
+   },
+   {
+    "lead": "Pages for tokens, blobs and games.",
+    "text": " Tokens, blobs, POKR and eMPP get their own pages, and a protocol transaction shows its payload decoded field by field.",
+    "image": null,
+    "alt": "Pages for tokens, blobs and games",
+    "means": null,
+    "url": null
+   }
+  ],
+  "audiences": {},
+  "diagram": null,
+  "compat": [
+   [
+    "Minimum version on the network",
+    "12.5.1, required from Napoleon (2026-12-21 20:50 UTC)"
+   ],
+   [
+    "Napoleon",
+    "Every node must run 12.5.1 or later before 2026-12-21 20:50 UTC. This version qualifies."
+   ],
+   [
+    "Upgrading",
+    "Stop the node, replace the binaries, start it. The data directory is kept."
+   ],
+   [
+    "Going back",
+    "Stop the node and put the previous binaries back. Going back is not always possible once a newer version has written to the data directory; the release says when."
+   ]
+  ],
+  "files": {
+   "SHA256SUMS": 2410,
+   "lotus-binaries-12.5.2-linux-x86_64.tar.gz": 42420496,
+   "lotus-binaries-12.5.2-macos-x86_64.tar.gz": 38986875,
+   "lotus-binaries-12.5.2-windows-x86_64.zip": 22763715,
+   "lotus-cli-12.5.2-linux-x86_64.tar.gz": 945695,
+   "lotus-cli-12.5.2-macos-x86_64.tar.gz": 453311,
+   "lotus-cli-12.5.2-windows-x86_64.zip": 831339,
+   "lotus-gpu-miner-12.5.2-linux-x86_64.tar.gz": 2932911,
+   "lotus-miner-gui-12.5.2-linux-x86_64.tar.gz": 22258382,
+   "lotus-miner-gui-12.5.2-macos-arm64.zip": 10741575,
+   "lotus-miner-gui-12.5.2-macos-universal.zip": 20657046,
+   "lotus-miner-gui-12.5.2-macos-x86_64.zip": 11677792,
+   "lotus-miner-gui-12.5.2-windows-x86_64.zip": 12179034,
+   "lotus-seeder-12.5.2-linux-x86_64.tar.gz": 18609988,
+   "lotus-seeder-12.5.2-macos-x86_64.tar.gz": 17506465,
+   "lotus-tx-12.5.2-linux-x86_64.tar.gz": 1297695,
+   "lotus-tx-12.5.2-macos-x86_64.tar.gz": 836353,
+   "lotus-tx-12.5.2-windows-x86_64.zip": 1191929,
+   "lotus-wallet-12.5.2-linux-x86_64.tar.gz": 3017096,
+   "lotus-wallet-12.5.2-macos-x86_64.tar.gz": 2719733,
+   "lotus-wallet-12.5.2-windows-x86_64.zip": 2807119,
+   "lotusd-12.5.2-linux-x86_64.tar.gz": 18542133,
+   "lotusd-12.5.2-macos-x86_64.tar.gz": 17468468,
+   "lotusd-12.5.2-windows-x86_64.zip": 17933916
+  },
+  "images": [
+   "lotusd",
+   "lotus-cli",
+   "lotus-tx",
+   "lotus-seeder",
+   "lotus-wallet",
+   "lotus-gpu-miner"
+  ]
+ },
+ {
+  "version": "12.5.1",
+  "tag": "v12.5.1",
+  "date": "2026-11-20",
+  "title": "Ready for the Napoleon fork",
+  "consensus": null,
+  "minimum": "12.5.1, required from Napoleon (2026-12-21 20:50 UTC)",
+  "private": true,
+  "napoleon_ready": true,
+  "hero": null,
+  "intro": [],
+  "alerts": [
+   {
+    "kind": "IMPORTANT",
+    "text": "**Napoleon, 2026-12-21 20:50 UTC:** every node must run 12.5.1 or later before then. This version qualifies. Until Napoleon it follows the same rules as 12.4.x, so you can upgrade now. Earlier versions, 12.4.x included, do not follow the chain after the fork."
+   }
+  ],
+  "items": [
+   {
+    "lead": "Merged mining on real parent chains.",
+    "text": " From Napoleon, merged-mined blocks must be anchored to real Bitcoin, eCash, Bitcoin Cash or Litecoin blocks.",
+    "image": null,
+    "alt": "Merged mining on real parent chains",
+    "means": null,
+    "url": null
+   },
+   {
+    "lead": "Pools: one setting for SHA-256d.",
+    "text": " Litecoin pools that already merge-mine Lotus with standard AuxPoW need no change. SHA-256d pools (eCash, Bitcoin, Bitcoin Cash) name their chain in one place: `createauxblock <address> xec|btc|bch`, or `-auxpowalgo=<chain>` on the Lotus node.",
+    "image": null,
+    "alt": "Pools: one setting for SHA-256d",
+    "means": null,
+    "url": null
+   },
+   {
+    "lead": "One difficulty lane per parent chain.",
+    "text": " From Napoleon, merged mining on Bitcoin, eCash, Bitcoin Cash and Litecoin each has its own difficulty, and a miner picks the chain by its stratum port. Merged mining cannot crowd out native mining.",
+    "image": null,
+    "alt": "One difficulty lane per parent chain",
+    "means": null,
+    "url": null
+   },
+   {
+    "lead": "Parent chains in the dashboard.",
+    "text": " The explorer and the network pages show the parent chains Lotus follows.",
+    "image": null,
+    "alt": "Parent chains in the dashboard",
+    "means": null,
+    "url": null
+   },
+   {
+    "lead": "Rewards spendable sooner.",
+    "text": " From Napoleon, block rewards and pool payouts can be spent after 20 blocks (about 40 minutes).",
+    "image": null,
+    "alt": "Rewards spendable sooner",
+    "means": null,
+    "url": null
+   },
+   {
+    "lead": "Upgrade notice.",
+    "text": " The node tells you when a newer version is announced by enough of its peers.",
+    "image": null,
+    "alt": "Upgrade notice",
+    "means": null,
+    "url": null
+   }
+  ],
+  "audiences": {},
+  "diagram": null,
+  "compat": [
+   [
+    "Minimum version on the network",
+    "12.5.1, required from Napoleon (2026-12-21 20:50 UTC)"
+   ],
+   [
+    "Napoleon",
+    "Every node must run 12.5.1 or later before 2026-12-21 20:50 UTC. This version qualifies."
+   ],
+   [
+    "Upgrading",
+    "Stop the node, replace the binaries, start it. The data directory is kept."
+   ],
+   [
+    "Going back",
+    "Stop the node and put the previous binaries back. Going back is not always possible once a newer version has written to the data directory; the release says when."
+   ]
+  ],
+  "files": {
+   "SHA256SUMS": 2410,
+   "lotus-binaries-12.5.1-linux-x86_64.tar.gz": 35543764,
+   "lotus-binaries-12.5.1-macos-x86_64.tar.gz": 32117368,
+   "lotus-binaries-12.5.1-windows-x86_64.zip": 19324336,
+   "lotus-cli-12.5.1-linux-x86_64.tar.gz": 945692,
+   "lotus-cli-12.5.1-macos-x86_64.tar.gz": 453315,
+   "lotus-cli-12.5.1-windows-x86_64.zip": 831336,
+   "lotus-gpu-miner-12.5.1-linux-x86_64.tar.gz": 2932918,
+   "lotus-miner-gui-12.5.1-linux-x86_64.tar.gz": 22258744,
+   "lotus-miner-gui-12.5.1-macos-arm64.zip": 10741573,
+   "lotus-miner-gui-12.5.1-macos-universal.zip": 20663158,
+   "lotus-miner-gui-12.5.1-macos-x86_64.zip": 11680143,
+   "lotus-miner-gui-12.5.1-windows-x86_64.zip": 12179034,
+   "lotus-seeder-12.5.1-linux-x86_64.tar.gz": 15173221,
+   "lotus-seeder-12.5.1-macos-x86_64.tar.gz": 14071866,
+   "lotus-tx-12.5.1-linux-x86_64.tar.gz": 1297700,
+   "lotus-tx-12.5.1-macos-x86_64.tar.gz": 836359,
+   "lotus-tx-12.5.1-windows-x86_64.zip": 1191927,
+   "lotus-wallet-12.5.1-linux-x86_64.tar.gz": 3017110,
+   "lotus-wallet-12.5.1-macos-x86_64.tar.gz": 2719734,
+   "lotus-wallet-12.5.1-windows-x86_64.zip": 2807116,
+   "lotusd-12.5.1-linux-x86_64.tar.gz": 15104471,
+   "lotusd-12.5.1-macos-x86_64.tar.gz": 14033680,
+   "lotusd-12.5.1-windows-x86_64.zip": 14494545
+  },
+  "images": [
+   "lotusd",
+   "lotus-cli",
+   "lotus-tx",
+   "lotus-seeder",
+   "lotus-wallet",
+   "lotus-gpu-miner"
+  ]
+ },
+ {
+  "version": "12.4.16",
+  "tag": "v12.4.16",
+  "date": "2026-11-17",
+  "title": "Pool links that no longer stall, faster block connection, Taproot addresses, one GPU miner",
+  "consensus": "none. The rules and the activation time are those of 12.4.13",
+  "minimum": "12.4.13, required from Napoleon (2026-12-21 20:50 UTC)",
+  "private": false,
+  "napoleon_ready": false,
+  "hero": null,
+  "intro": [],
+  "alerts": [
+   {
+    "kind": "IMPORTANT",
+    "text": "**Napoleon, 2026-12-21 20:50 UTC:** every node must run 12.4.13 or later by then. This version qualifies."
+   },
+   {
+    "kind": "WARNING",
+    "text": "**GPU miner users:** the `lotus-gpu-miner-amd` image and the `-nvidia` / `-amd` archives are no longer produced. Use `lotus-gpu-miner` for both vendors, and pass your own payout address: there is no built-in one any more. AMD cards were not tested on real hardware for this release."
+   }
+  ],
+  "items": [
+   {
+    "lead": "Pool links.",
+    "text": " Two pool nodes that connect no longer stop reading each other while both send their catch-up; such links used to stay dead until the ping timeout.",
+    "image": null,
+    "alt": "Pool links",
+    "means": null,
+    "url": null
+   },
+   {
+    "lead": "Faster block connection.",
+    "text": " The explorer and module databases are written after the block, in order, on their own thread: connecting a large block takes about half the time. `-asyncindex=0` keeps the old path.",
+    "image": null,
+    "alt": "Faster block connection",
+    "means": null,
+    "url": null
+   },
+   {
+    "lead": "Batch submission and light templates.",
+    "text": " `sendrawtransactions` admits up to 1,000 transactions per call, 2.2 to 2.7 times faster than separate calls; `getblocktemplatelight` answers in under a millisecond.",
+    "image": null,
+    "alt": "Batch submission and light templates",
+    "means": null,
+    "url": null
+   },
+   {
+    "lead": "Taproot addresses.",
+    "text": " The node wallet, the web wallet, the miners and the pool can create, receive on and spend from Taproot (`lotus_J…`) addresses. Legacy addresses stay the default.",
+    "image": null,
+    "alt": "Taproot addresses",
+    "means": null,
+    "url": null
+   },
+   {
+    "lead": "One GPU miner.",
+    "text": " A single program and image for NVIDIA and AMD, with `--backend auto|nvidia|amd`.",
+    "image": null,
+    "alt": "One GPU miner",
+    "means": null,
+    "url": null
+   }
+  ],
+  "audiences": {},
+  "diagram": null,
+  "compat": [
+   [
+    "Consensus rules",
+    "none. The rules and the activation time are those of 12.4.13"
+   ],
+   [
+    "Minimum version on the network",
+    "12.4.13, required from Napoleon (2026-12-21 20:50 UTC)"
+   ],
+   [
+    "Napoleon",
+    "Every node must run 12.5.1 or later before 2026-12-21 20:50 UTC. **This version does not.**"
+   ],
+   [
+    "Upgrading",
+    "Stop the node, replace the binaries, start it. The data directory is kept."
+   ],
+   [
+    "Going back",
+    "Stop the node and put the previous binaries back. Going back is not always possible once a newer version has written to the data directory; the release says when."
+   ]
+  ],
+  "files": {
+   "SHA256SUMS": 2433,
+   "lotus-binaries-12.4.16-linux-x86_64.tar.gz": 34377111,
+   "lotus-binaries-12.4.16-macos-x86_64.tar.gz": 30774998,
+   "lotus-binaries-12.4.16-windows-x86_64.zip": 18818449,
+   "lotus-cli-12.4.16-linux-x86_64.tar.gz": 944200,
+   "lotus-cli-12.4.16-macos-x86_64.tar.gz": 450736,
+   "lotus-cli-12.4.16-windows-x86_64.zip": 829440,
+   "lotus-gpu-miner-12.4.16-linux-x86_64.tar.gz": 2848559,
+   "lotus-miner-gui-12.4.16-linux-x86_64.tar.gz": 21963895,
+   "lotus-miner-gui-12.4.16-macos-arm64.zip": 9364027,
+   "lotus-miner-gui-12.4.16-macos-universal.zip": 19183303,
+   "lotus-miner-gui-12.4.16-macos-x86_64.zip": 10295983,
+   "lotus-miner-gui-12.4.16-windows-x86_64.zip": 10840078,
+   "lotus-seeder-12.4.16-linux-x86_64.tar.gz": 14262799,
+   "lotus-seeder-12.4.16-macos-x86_64.tar.gz": 13122779,
+   "lotus-tx-12.4.16-linux-x86_64.tar.gz": 1285930,
+   "lotus-tx-12.4.16-macos-x86_64.tar.gz": 823772,
+   "lotus-tx-12.4.16-windows-x86_64.zip": 1176659,
+   "lotus-wallet-12.4.16-linux-x86_64.tar.gz": 3684620,
+   "lotus-wallet-12.4.16-macos-x86_64.tar.gz": 3290184,
+   "lotus-wallet-12.4.16-windows-x86_64.zip": 3376953,
+   "lotusd-12.4.16-linux-x86_64.tar.gz": 14196970,
+   "lotusd-12.4.16-macos-x86_64.tar.gz": 13083569,
+   "lotusd-12.4.16-windows-x86_64.zip": 13435991
+  },
+  "images": [
+   "lotusd",
+   "lotus-cli",
+   "lotus-tx",
+   "lotus-seeder",
+   "lotus-wallet",
+   "lotus-gpu-miner"
+  ]
+ },
+ {
+  "version": "12.4.15",
+  "tag": "v12.4.15",
+  "date": "2026-11-16",
+  "title": "Faster relay, faster reads, and the wallet fix",
+  "consensus": "none. The rules and the activation time are those of 12.4.13",
+  "minimum": "12.4.13, required from Napoleon (2026-12-21 20:50 UTC)",
+  "private": false,
+  "napoleon_ready": false,
+  "hero": null,
+  "intro": [],
+  "alerts": [
+   {
+    "kind": "IMPORTANT",
+    "text": "**Napoleon, 2026-12-21 20:50 UTC:** every node must run 12.4.13 or later by then. This version qualifies."
+   }
+  ],
+  "items": [
+   {
+    "lead": "Wallet fix.",
+    "text": " `createwallet` and `loadwallet` work again on the release binaries. They failed for SQLite wallets in 12.4.13 and 12.4.14.",
+    "image": null,
+    "alt": "Wallet fix",
+    "means": null,
+    "url": null
+   },
+   {
+    "lead": "Faster relay.",
+    "text": " Between trusted nodes a burst of 500 transactions crosses each hop in 0.1 to 0.2 s instead of about 2 s, and a burst of 5,000 always arrives between ordinary peers.",
+    "image": null,
+    "alt": "Faster relay",
+    "means": null,
+    "url": null
+   },
+   {
+    "lead": "Faster reads.",
+    "text": " `getblockchaininfo`, `getmempoolinfo` and the chain and mempool summaries no longer wait for the node's main locks; the one-second outliers under load are gone.",
+    "image": null,
+    "alt": "Faster reads",
+    "means": null,
+    "url": null
+   },
+   {
+    "lead": "Thin mode.",
+    "text": " A thin node no longer floods its proof servers when a block has many inputs it does not hold. Upgrade proof servers to 12.4.15 first.",
+    "image": null,
+    "alt": "Thin mode",
+    "means": null,
+    "url": null
+   },
+   {
+    "lead": "Pool.",
+    "text": " Less CPU spent on pool messages, with no change to the ledger.",
+    "image": null,
+    "alt": "Pool",
+    "means": null,
+    "url": null
+   },
+   {
+    "lead": "Web interface.",
+    "text": " A refreshed look for the node's dashboard.",
+    "image": null,
+    "alt": "Web interface",
+    "means": null,
+    "url": null
+   }
+  ],
+  "audiences": {},
+  "diagram": null,
+  "compat": [
+   [
+    "Consensus rules",
+    "none. The rules and the activation time are those of 12.4.13"
+   ],
+   [
+    "Minimum version on the network",
+    "12.4.13, required from Napoleon (2026-12-21 20:50 UTC)"
+   ],
+   [
+    "Napoleon",
+    "Every node must run 12.5.1 or later before 2026-12-21 20:50 UTC. **This version does not.**"
+   ],
+   [
+    "Upgrading",
+    "Stop the node, replace the binaries, start it. The data directory is kept."
+   ],
+   [
+    "Going back",
+    "Stop the node and put the previous binaries back. Going back is not always possible once a newer version has written to the data directory; the release says when."
+   ]
+  ],
+  "files": {
+   "SHA256SUMS": 2554,
+   "lotus-binaries-12.4.15-linux-x86_64.tar.gz": 33094076,
+   "lotus-binaries-12.4.15-macos-x86_64.tar.gz": 29558177,
+   "lotus-binaries-12.4.15-windows-x86_64.zip": 18191295,
+   "lotus-cli-12.4.15-linux-x86_64.tar.gz": 943799,
+   "lotus-cli-12.4.15-macos-x86_64.tar.gz": 450578,
+   "lotus-cli-12.4.15-windows-x86_64.zip": 829064,
+   "lotus-gpu-miner-amd-12.4.15-linux-x86_64.tar.gz": 2801866,
+   "lotus-gpu-miner-nvidia-12.4.15-linux-x86_64.tar.gz": 2802175,
+   "lotus-miner-gui-12.4.15-linux-x86_64.tar.gz": 21829798,
+   "lotus-miner-gui-12.4.15-macos-arm64.zip": 9243435,
+   "lotus-miner-gui-12.4.15-macos-universal.zip": 18907783,
+   "lotus-miner-gui-12.4.15-macos-x86_64.zip": 10158544,
+   "lotus-miner-gui-12.4.15-windows-x86_64.zip": 10723248,
+   "lotus-seeder-12.4.15-linux-x86_64.tar.gz": 13631017,
+   "lotus-seeder-12.4.15-macos-x86_64.tar.gz": 12523475,
+   "lotus-tx-12.4.15-linux-x86_64.tar.gz": 1278986,
+   "lotus-tx-12.4.15-macos-x86_64.tar.gz": 817815,
+   "lotus-tx-12.4.15-windows-x86_64.zip": 1169934,
+   "lotus-wallet-12.4.15-linux-x86_64.tar.gz": 3673445,
+   "lotus-wallet-12.4.15-macos-x86_64.tar.gz": 3281806,
+   "lotus-wallet-12.4.15-windows-x86_64.zip": 3365288,
+   "lotusd-12.4.15-linux-x86_64.tar.gz": 13565950,
+   "lotusd-12.4.15-macos-x86_64.tar.gz": 12482189,
+   "lotusd-12.4.15-windows-x86_64.zip": 12827603
+  },
+  "images": [
+   "lotusd",
+   "lotus-cli",
+   "lotus-tx",
+   "lotus-seeder",
+   "lotus-wallet",
+   "lotus-gpu-miner",
+   "lotus-gpu-miner-amd"
+  ]
+ },
+ {
+  "version": "12.4.14",
+  "tag": "v12.4.14",
+  "date": "2026-11-16",
+  "title": "Thin mode, explorer paging, safer RPC behind a proxy",
+  "consensus": "none. The rules and the activation time are those of 12.4.13",
+  "minimum": "12.4.13, required from Napoleon (2026-12-21 20:50 UTC)",
+  "private": false,
+  "napoleon_ready": false,
+  "hero": null,
+  "intro": [],
+  "alerts": [
+   {
+    "kind": "IMPORTANT",
+    "text": "**Napoleon, 2026-12-21 20:50 UTC:** every node must run 12.4.13 or later by then. This version qualifies."
+   },
+   {
+    "kind": "WARNING",
+    "text": "**Known issue, fixed in 12.4.15:** these binaries cannot create or load an SQLite wallet, and a node started with `-wallet=` on such a wallet does not start. If you use the wallet, install 12.4.15."
+   }
+  ],
+  "items": [
+   {
+    "lead": "Thin mode.",
+    "text": " `-thin=1` runs a node without the history: it proves the coins it needs from peers and checks them against the header chain. `-thin=utxo` starts from a UTXO snapshot.",
+    "image": null,
+    "alt": "Thin mode",
+    "means": null,
+    "url": null
+   },
+   {
+    "lead": "UTXO snapshots.",
+    "text": " Full nodes write a snapshot every 100 blocks, once its commitment is buried in the chain, and serve the newest one for download.",
+    "image": null,
+    "alt": "UTXO snapshots",
+    "means": null,
+    "url": null
+   },
+   {
+    "lead": "Explorer.",
+    "text": " Address history with cursor paging, and batch endpoints for transactions and addresses.",
+    "image": null,
+    "alt": "Explorer",
+    "means": null,
+    "url": null
+   },
+   {
+    "lead": "Security.",
+    "text": " JSON-RPC and the operator routes refuse a request that arrives through a reverse proxy, unless you set `-rpcallowforwarded=1`.",
+    "image": null,
+    "alt": "Security",
+    "means": null,
+    "url": null
+   },
+   {
+    "lead": "Dashboard.",
+    "text": " A second polish pass of the node's web interface.",
+    "image": null,
+    "alt": "Dashboard",
+    "means": null,
+    "url": null
+   }
+  ],
+  "audiences": {},
+  "diagram": null,
+  "compat": [
+   [
+    "Consensus rules",
+    "none. The rules and the activation time are those of 12.4.13"
+   ],
+   [
+    "Minimum version on the network",
+    "12.4.13, required from Napoleon (2026-12-21 20:50 UTC)"
+   ],
+   [
+    "Napoleon",
+    "Every node must run 12.5.1 or later before 2026-12-21 20:50 UTC. **This version does not.**"
+   ],
+   [
+    "Upgrading",
+    "Stop the node, replace the binaries, start it. The data directory is kept."
+   ],
+   [
+    "Going back",
+    "Stop the node and put the previous binaries back. Going back is not always possible once a newer version has written to the data directory; the release says when."
+   ]
+  ],
+  "files": {
+   "SHA256SUMS": 2554,
+   "lotus-binaries-12.4.14-linux-x86_64.tar.gz": 32871635,
+   "lotus-binaries-12.4.14-macos-x86_64.tar.gz": 29339550,
+   "lotus-binaries-12.4.14-windows-x86_64.zip": 18078381,
+   "lotus-cli-12.4.14-linux-x86_64.tar.gz": 943940,
+   "lotus-cli-12.4.14-macos-x86_64.tar.gz": 450452,
+   "lotus-cli-12.4.14-windows-x86_64.zip": 829114,
+   "lotus-gpu-miner-amd-12.4.14-linux-x86_64.tar.gz": 2801858,
+   "lotus-gpu-miner-nvidia-12.4.14-linux-x86_64.tar.gz": 2802241,
+   "lotus-miner-gui-12.4.14-linux-x86_64.tar.gz": 21829815,
+   "lotus-miner-gui-12.4.14-macos-arm64.zip": 9239008,
+   "lotus-miner-gui-12.4.14-macos-universal.zip": 18907781,
+   "lotus-miner-gui-12.4.14-macos-x86_64.zip": 10158541,
+   "lotus-miner-gui-12.4.14-windows-x86_64.zip": 10720796,
+   "lotus-seeder-12.4.14-linux-x86_64.tar.gz": 13517123,
+   "lotus-seeder-12.4.14-macos-x86_64.tar.gz": 12416376,
+   "lotus-tx-12.4.14-linux-x86_64.tar.gz": 1278972,
+   "lotus-tx-12.4.14-macos-x86_64.tar.gz": 817496,
+   "lotus-tx-12.4.14-windows-x86_64.zip": 1169652,
+   "lotus-wallet-12.4.14-linux-x86_64.tar.gz": 3673465,
+   "lotus-wallet-12.4.14-macos-x86_64.tar.gz": 3281596,
+   "lotus-wallet-12.4.14-windows-x86_64.zip": 3364932,
+   "lotusd-12.4.14-linux-x86_64.tar.gz": 13451812,
+   "lotusd-12.4.14-macos-x86_64.tar.gz": 12371832,
+   "lotusd-12.4.14-windows-x86_64.zip": 12715277
+  },
+  "images": [
+   "lotusd",
+   "lotus-cli",
+   "lotus-tx",
+   "lotus-seeder",
+   "lotus-wallet",
+   "lotus-gpu-miner",
+   "lotus-gpu-miner-amd"
+  ]
+ },
+ {
+  "version": "12.4.13",
+  "tag": "v12.4.13",
+  "date": "2026-11-16",
+  "title": "The Napoleon network upgrade: required before 21 December 2026",
+  "consensus": "yes. New rules activate at Napoleon, when the median time past of the previous block reaches 1797886200 (2026-12-21 20:50 UTC)",
+  "minimum": "12.4.13, required from Napoleon (2026-12-21 20:50 UTC)",
+  "private": false,
+  "napoleon_ready": false,
+  "hero": null,
+  "intro": [],
+  "alerts": [
+   {
+    "kind": "IMPORTANT",
+    "text": "**Every node operator, pool and exchange must run 12.4.13 or later before 2026-12-21 20:50 UTC.**\nA node on an older version, or on any LotusiaStewardship release, leaves the chain at the first block that uses the new rules. There is no grace period.\nMiners and pools that build their own coinbase must add the UTXO set commitment before that date."
+   },
+   {
+    "kind": "WARNING",
+    "text": "**Known issue, fixed in 12.4.15:** these binaries cannot create or load an SQLite wallet, and a node started with `-wallet=` on such a wallet does not start. If you use the wallet, install 12.4.15."
+   }
+  ],
+  "items": [
+   {
+    "lead": "Merged mining.",
+    "text": " From Napoleon a Lotus block can be mined together with Bitcoin or Litecoin: one parent header proves one Lotus block.",
+    "image": null,
+    "alt": "Merged mining",
+    "means": null,
+    "url": null
+   },
+   {
+    "lead": "Contract opcodes.",
+    "text": " New script opcodes for contracts (introspection, `OP_MUL`, `OP_MULDIV`, Taproot state, `OP_CHECKBLOCKHASHVERIFY`) activate at Napoleon.",
+    "image": null,
+    "alt": "Contract opcodes",
+    "means": null,
+    "url": null
+   },
+   {
+    "lead": "UTXO set commitment.",
+    "text": " From Napoleon every block commits to the UTXO set in its coinbase, so a snapshot can be checked against the chain.",
+    "image": null,
+    "alt": "UTXO set commitment",
+    "means": null,
+    "url": null
+   },
+   {
+    "lead": "UTXO snapshots.",
+    "text": " A node can start from a UTXO snapshot and validate the history in the background. Full nodes write one every 100 blocks.",
+    "image": null,
+    "alt": "UTXO snapshots",
+    "means": null,
+    "url": null
+   },
+   {
+    "lead": "No more limit of 3 `OP_RETURN` outputs",
+    "text": " per transaction, from Napoleon.",
+    "image": null,
+    "alt": "No more limit of 3 `OP_RETURN` outputs",
+    "means": null,
+    "url": null
+   },
+   {
+    "lead": "Before Napoleon nothing changes:",
+    "text": " a 12.4.13 node validates, relays and mines exactly like 12.4.11.",
+    "image": null,
+    "alt": "Before Napoleon nothing changes",
+    "means": null,
+    "url": null
+   }
+  ],
+  "audiences": {},
+  "diagram": null,
+  "compat": [
+   [
+    "Consensus rules",
+    "yes. New rules activate at Napoleon, when the median time past of the previous block reaches 1797886200 (2026-12-21 20:50 UTC)"
+   ],
+   [
+    "Minimum version on the network",
+    "12.4.13, required from Napoleon (2026-12-21 20:50 UTC)"
+   ],
+   [
+    "Napoleon",
+    "Every node must run 12.5.1 or later before 2026-12-21 20:50 UTC. **This version does not.**"
+   ],
+   [
+    "Upgrading",
+    "Stop the node, replace the binaries, start it. The data directory is kept."
+   ],
+   [
+    "Going back",
+    "Stop the node and put the previous binaries back. Going back is not always possible once a newer version has written to the data directory; the release says when."
+   ]
+  ],
+  "files": {
+   "SHA256SUMS": 2554,
+   "lotus-binaries-12.4.13-linux-x86_64.tar.gz": 31866036,
+   "lotus-binaries-12.4.13-macos-x86_64.tar.gz": 28342787,
+   "lotus-binaries-12.4.13-windows-x86_64.zip": 17540009,
+   "lotus-cli-12.4.13-linux-x86_64.tar.gz": 943327,
+   "lotus-cli-12.4.13-macos-x86_64.tar.gz": 449909,
+   "lotus-cli-12.4.13-windows-x86_64.zip": 828718,
+   "lotus-gpu-miner-amd-12.4.13-linux-x86_64.tar.gz": 2801868,
+   "lotus-gpu-miner-nvidia-12.4.13-linux-x86_64.tar.gz": 2802165,
+   "lotus-miner-gui-12.4.13-linux-x86_64.tar.gz": 21832585,
+   "lotus-miner-gui-12.4.13-macos-arm64.zip": 9239009,
+   "lotus-miner-gui-12.4.13-macos-universal.zip": 18907781,
+   "lotus-miner-gui-12.4.13-macos-x86_64.zip": 10158539,
+   "lotus-miner-gui-12.4.13-windows-x86_64.zip": 10723248,
+   "lotus-seeder-12.4.13-linux-x86_64.tar.gz": 13017711,
+   "lotus-seeder-12.4.13-macos-x86_64.tar.gz": 11928632,
+   "lotus-tx-12.4.13-linux-x86_64.tar.gz": 1276302,
+   "lotus-tx-12.4.13-macos-x86_64.tar.gz": 811438,
+   "lotus-tx-12.4.13-windows-x86_64.zip": 1164917,
+   "lotus-wallet-12.4.13-linux-x86_64.tar.gz": 3671018,
+   "lotus-wallet-12.4.13-macos-x86_64.tar.gz": 3269100,
+   "lotus-wallet-12.4.13-windows-x86_64.zip": 3358423,
+   "lotusd-12.4.13-linux-x86_64.tar.gz": 12953899,
+   "lotusd-12.4.13-macos-x86_64.tar.gz": 11881852,
+   "lotusd-12.4.13-windows-x86_64.zip": 12188545
+  },
+  "images": [
+   "lotusd",
+   "lotus-cli",
+   "lotus-tx",
+   "lotus-seeder",
+   "lotus-wallet",
+   "lotus-gpu-miner",
+   "lotus-gpu-miner-amd"
+  ]
+ }
+]
