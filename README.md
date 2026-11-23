@@ -14,12 +14,13 @@ This repository holds releases only: the downloads, their checksums and
 the release notes. It has no source code. Live state of the network
 (nodes, mining, wallets, downloads): [status.givelotus.org](https://status.givelotus.org).
 
-> **Operators: run 12.5.1 or later before 2026-12-21 20:50 UTC.** That is
+> **Operators: run 12.5.6 or later before 2026-12-21 20:50 UTC.** That is
 > when the Napoleon network upgrade activates new consensus rules on
 > mainnet (median time past of the previous block at or after
 > 1797886200). Earlier versions, 12.4.x included, do not follow the chain
 > after the fork. Until then 12.5.x follows the same rules as 12.4.x, so
-> you can upgrade now. The latest version is **12.5.3**; the notes of each
+> you can upgrade now. The latest version is **12.5.6** (it fixes an indexer stall
+> where a failed rollback could stop block processing); the notes of each
 > release say what changes and what to do. Upgrade guide:
 > [lotusia.network/upgrades](https://lotusia.network/upgrades/).
 
@@ -51,13 +52,13 @@ and with `latest`.
 
 ## Install
 
-Replace `12.5.3` with the version you want. The release page lists every
+Replace `12.5.6` with the version you want. The release page lists every
 file with its size and checksum.
 
 ### Linux
 
 ```sh
-V=12.5.3
+V=12.5.6
 BASE=https://github.com/LotusDevOrg/lotusd-releases/releases/download/v$V
 curl -fsSLO $BASE/SHA256SUMS
 curl -fsSLO $BASE/lotus-binaries-$V-linux-x86_64.tar.gz
@@ -87,7 +88,7 @@ must give the value on that file's line in `SHA256SUMS`. Then unzip.
 ### Docker
 
 ```sh
-docker pull ghcr.io/lotusdevorg/lotusd:12.5.3
+docker pull ghcr.io/lotusdevorg/lotusd:12.5.6
 ```
 
 Pull a version, not only `latest`, so that an upgrade is something you
