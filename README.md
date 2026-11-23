@@ -1,12 +1,18 @@
 # Lotus node (lotusd): releases
 
+[![Lotus network status](https://status.givelotus.org/badge/status.svg)](https://status.givelotus.org)
+[![Mainnet](https://status.givelotus.org/badge/mainnet.svg)](https://status.givelotus.org)
+[![Latest release](https://status.givelotus.org/badge/release.svg)](https://github.com/LotusDevOrg/lotusd-releases/releases/latest)
+[![Uptime 90 days](https://status.givelotus.org/badge/uptime-90d.svg)](https://status.givelotus.org)
+
 Binaries of the Lotus node software built by LotusDevOrg: `lotusd` and its
 tools, the GPU miner and the Lotus Miner desktop app.
 
 **Download the latest version: [Releases → Latest](https://github.com/LotusDevOrg/lotusd-releases/releases/latest)**
 
 This repository holds releases only: the downloads, their checksums and
-the release notes. It has no source code.
+the release notes. It has no source code. Live state of the network
+(nodes, mining, wallets, downloads): [status.givelotus.org](https://status.givelotus.org).
 
 > **Operators: run 12.5.1 or later before 2026-12-21 20:50 UTC.** That is
 > when the Napoleon network upgrade activates new consensus rules on
