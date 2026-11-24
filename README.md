@@ -1,3 +1,5 @@
+<p align="center"><img src=".github/banner.png" alt="lotusd-releases" width="640"></p>
+
 # Lotus node (lotusd): releases
 
 [![Lotus network status](https://status.givelotus.org/badge/status.svg)](https://status.givelotus.org)
