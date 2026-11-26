@@ -16,17 +16,20 @@ This repository holds releases only: the downloads, their checksums and
 the release notes. It has no source code. Live state of the network
 (nodes, mining, wallets, downloads): [status.givelotus.org](https://status.givelotus.org).
 
-> **Operators: run 12.5.8 or later before 2026-12-21 20:50 UTC.** That is
+> **Operators: run 12.5.9 or later before 2026-12-21 20:50 UTC.** That is
 > when the Napoleon network upgrade activates new consensus rules on
 > mainnet (median time past of the previous block at or after
-> 1797886200). Earlier versions, 12.5.7 and every 12.4.x included, do not
-> follow the chain after the fork. Until then 12.5.8 follows the same rules
-> as earlier 12.5.x, so you can upgrade now. The latest version is
-> **12.5.8**: it carries the final Napoleon checkpoints (a mainnet
+> 1797886200). 12.5.9 is the release to run before then: 12.5.8 is no
+> longer the recommended path, and 12.5.7 and every 12.4.x included do
+> not follow the chain after the fork. Until then 12.5.9 follows the same
+> rules as earlier 12.5.x, so you can upgrade now. The latest version is
+> **12.5.9**: it carries the final Napoleon checkpoints (a mainnet
 > checkpoint at block 1429500 and an updated Litecoin parent checkpoint)
-> and a fix to the parent-chain header rule. A rollback below 12.5.8 needs
-> one start with `-reindex-chainstate`. The notes of each release say what
-> changes and what to do. Upgrade guide:
+> and the fix to the parent-chain header rule. Its first start converts
+> the block files into one database (a few minutes, about 6.3 GB of free
+> disk); to go back to 12.5.8, start 12.5.9 once with `-blockstore=flat`.
+> A rollback below 12.5.8 needs one start with `-reindex-chainstate`. The
+> notes of each release say what changes and what to do. Upgrade guide:
 > [lotusia.network/upgrades](https://lotusia.network/upgrades/).
 
 > **Merged-mining pools, from Napoleon:** Litecoin pools that already
@@ -57,13 +60,13 @@ and with `latest`.
 
 ## Install
 
-Replace `12.5.8` with the version you want. The release page lists every
+Replace `12.5.9` with the version you want. The release page lists every
 file with its size and checksum.
 
 ### Linux
 
 ```sh
-V=12.5.8
+V=12.5.9
 BASE=https://github.com/LotusDevOrg/lotusd-releases/releases/download/v$V
 curl -fsSLO $BASE/SHA256SUMS
 curl -fsSLO $BASE/lotus-binaries-$V-linux-x86_64.tar.gz
@@ -93,7 +96,7 @@ must give the value on that file's line in `SHA256SUMS`. Then unzip.
 ### Docker
 
 ```sh
-docker pull ghcr.io/lotusdevorg/lotusd:12.5.8
+docker pull ghcr.io/lotusdevorg/lotusd:12.5.9
 ```
 
 Pull a version, not only `latest`, so that an upgrade is something you
